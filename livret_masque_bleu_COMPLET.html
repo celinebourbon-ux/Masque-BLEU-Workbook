@@ -221,6 +221,28 @@ ul.il li strong{color:var(--ink);font-weight:600}
   .page:last-child{page-break-after:avoid}
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
 }
+/* ── WATERMARK ACHETEUR ── */
+#wm{
+  display:none;
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-35deg);
+  z-index:9999;
+  pointer-events:none;
+  white-space:nowrap;
+  font-family:'Jost',sans-serif;
+  font-size:9pt;
+  font-weight:300;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.07);
+  text-align:center;
+  line-height:1.8;
+}
+@media print{
+  #wm{display:block}
+  #buyer-line{display:block !important}
+}
 @page{size:A5;margin:0}
 }
 
@@ -345,9 +367,55 @@ ul.il li strong{color:var(--ink)!important}
   .book { padding: .8rem .3rem 6rem; gap: 32px; max-width: 100%; }
   .page { width: 100%; }
 }
+/* ── LENTILLES DE RÉSONANCE ────────────────────────────────────── */
+/* Design : cream page avec accent vert or gold selon intensité   */
+.page-lentille{background:var(--cream);display:flex;flex-direction:column;padding:17mm 17mm 17mm 13mm;position:relative;overflow:hidden}
+.lentille-accent{position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--g300),var(--gold))}
+.lentille-badge{display:inline-flex;align-items:center;gap:2mm;background:linear-gradient(90deg,var(--g600),var(--g500));border-radius:40px;padding:1.5mm 4mm;margin-bottom:4mm}
+.lentille-badge-txt{font-family:'Jost',sans-serif;font-size:5pt;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--goldl)}
+.lentille-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--g200)}
+.lentille-title{font-family:'Cormorant Garamond',serif;font-size:15pt;font-weight:600;color:var(--g500);margin-bottom:1.5mm;line-height:1.15}
+.lentille-subtitle{font-family:'Cormorant Garamond',serif;font-size:9pt;font-style:italic;color:var(--inkl);margin-bottom:4mm}
+.lentille-rule{width:18mm;height:1px;background:linear-gradient(90deg,var(--g300),transparent);margin-bottom:4mm}
+.lentille-body{font-family:'Jost',sans-serif;font-size:7.5pt;line-height:1.85;color:var(--inkm);margin-bottom:4mm}
+.lentille-body strong{color:var(--g500);font-weight:600}
+.lentille-body em{color:var(--g400);font-style:italic}
+.lentille-box{border-left:2px solid var(--g300);padding:3mm 4mm;margin-bottom:4mm;background:rgba(30,66,32,.04)}
+.lentille-box-label{font-family:'Jost',sans-serif;font-size:5.5pt;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--g400);margin-bottom:1.5mm}
+.lentille-box-text{font-family:'Cormorant Garamond',serif;font-size:9pt;font-style:italic;color:var(--g600);line-height:1.7}
+.lentille-orange{border-left-color:var(--orange,#C4581F);background:rgba(196,88,31,.04)}
+.lentille-orange .lentille-box-label,.lentille-orange .lentille-box-text{color:var(--orange,#C4581F)}
+.lentille-jaune{border-left-color:var(--jaune,#B8930A);background:rgba(184,147,10,.04)}
+.lentille-jaune .lentille-box-label,.lentille-jaune .lentille-box-text{color:var(--jaune,#B8930A)}
+.lentille-indigo{border-left-color:var(--indigoc,#5C3280);background:rgba(92,50,128,.04)}
+.lentille-indigo .lentille-box-label,.lentille-indigo .lentille-box-text{color:var(--indigoc,#5C3280)}
+.lentille-cycle{margin-bottom:4mm}
+.lentille-cycle-title{font-family:'Jost',sans-serif;font-size:5.5pt;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--inkl);margin-bottom:2mm}
+.lentille-step{display:flex;gap:2.5mm;align-items:flex-start;padding:1.5mm 0;border-bottom:.4px solid rgba(0,0,0,.06)}
+.lentille-step:last-child{border-bottom:none}
+.lentille-step-n{font-family:'Cormorant Garamond',serif;font-size:11pt;font-weight:300;color:var(--g300);flex-shrink:0;width:4mm}
+.lentille-step-txt{font-family:'Jost',sans-serif;font-size:7pt;color:var(--inkm);line-height:1.7}
+.lentille-step-txt strong{color:var(--g500)}
+.lentille-step-txt em{color:var(--inkl);font-style:italic}
+.lentille-question{font-family:'Cormorant Garamond',serif;font-size:9pt;font-style:italic;color:var(--inkm);margin:3mm 0 1.5mm}
+.lentille-wta{width:100%;border:none;border-bottom:.7px solid rgba(106,101,84,.22);background:transparent;resize:none;font-family:'Jost',sans-serif;font-size:7.5pt;line-height:1.7;color:var(--inkm);outline:none;padding:.5mm 0}
+:root{--orange:#C4581F;--jaune:#B8930A;--indigoc:#5C3280}
+
+.lentille-indigo{border-left-color:#5C3280;background:rgba(92,50,128,.04)}
+.lentille-indigo .lentille-box-label,.lentille-indigo .lentille-box-text{color:#5C3280}
+.lentille-vert{border-left-color:#2D7A4F;background:rgba(30,66,32,.04)}
+.lentille-vert .lentille-box-label,.lentille-vert .lentille-box-text{color:#28562b}
+
 </style>
 </head>
 <body>
+<!-- WATERMARK ACHETEUR -->
+<div id="wm">
+  <span id="wm-nom">Document personnel</span><br>
+  <span id="wm-email"></span><br>
+  © Céline Bourbon · Méthode V.A.L.E.U.R© · Usage personnel uniquement
+</div>
+
 <div class="book">
 <div class="page page-cover" id="cover">
 <div class="cov-vignette"></div><div class="cov-light"></div>
@@ -477,7 +545,26 @@ Je m'engage à lâcher prise, progressivement, sur ce qui peut être confié aux
 <div class="wlines"><div class="wline"><input type="text" placeholder="Mon intention..."></div><div class="wline"><input type="text" placeholder=""></div><div class="wline"><input type="text" placeholder=""></div></div>
 <div class="pq" style="margin-top:3mm"><p>«&nbsp;Vous êtes prêt·e. Module 1 — apprendre à voir le réflexe de contrôle au moment où il s'enclenche.&nbsp;»</p><cite>Méthode V.A.L.E.U.R© — Module 1 · VOIR</cite></div>
 <div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 act">0</div><div class="pl ">V</div><div class="pl ">A</div><div class="pl ">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
-</div><div class="page page-d" id="mod1">
+</div><div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 0 · Votre configuration</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot"></div><span class="lentille-badge-txt">À lire avant de commencer</span></div>
+<div class="lentille-title">Si vous avez d'autres masques élevés</div>
+<div class="lentille-subtitle">Ce livret travaille votre Masque Bleu en premier — mais vos autres peurs interagissent avec le besoin de maîtrise.</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Votre questionnaire a révélé plusieurs masques actifs. <strong>C'est normal — et prévu.</strong> Le Masque Bleu produit un besoin profond de maîtriser les situations et les personnes — pour éviter le sentiment d'impuissance. Quand d'autres masques s'ajoutent, ce besoin de maîtrise s'oriente vers des domaines spécifiques : la performance, la certitude, ou les relations.</p>
+<p class="lentille-body">Ce livret travaille votre Masque Bleu en premier — non parce que les autres n'existent pas, mais parce que <strong>le besoin de maîtrise est le filtre à travers lequel tous vos autres masques s'expriment.</strong> Quand Bleu est actif, il amplifie tout le reste.</p>
+<p class="lentille-body">À certains moments du parcours, vous rencontrerez des <strong>Lentilles de Résonance</strong> — des pages courtes qui nomment comment votre configuration amplifiée interagit avec l'exercice en cours, et comment adapter votre pratique quand le besoin de maîtrise complique le travail.</p>
+<div class="lentille-box">
+  <div class="lentille-box-label">Les configurations les plus fréquentes avec le Masque Bleu</div>
+  <div class="lentille-box-text">Bleu + Indigo · Exigence Projetée — l'exigence intérieure qui déborde sur l'entourage, standards qui s'appliquent à tous<br>
+  Bleu + Jaune · Contrôle Relationnel Autoritaire — besoin de maîtrise ET de certitude, délégation impossible<br>
+  Bleu + Vert · Dépendance Contrôlante — besoin des autres ET contrôle pour ne pas les perdre</div>
+</div>
+<p class="lentille-body" style="font-size:7pt;color:var(--inkl)">Si votre masque secondaire ne figure pas ici, le parcours reste identique. Le besoin de maîtrise traverse toutes les configurations — les lentilles vous guident pour les plus fréquentes.</p>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl ">V</div><div class="pl ">A</div><div class="pl ">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-d" id="mod1">
 <div class="page-d-bg">V</div>
 <div class="pg-hd-d"><span class="pg-ch-d">Masque Bleu · Module 1</span><span class="pg-nb-d">13</span></div>
 <span class="tag-g">Étape 1 · Semaines 1 &amp; 2</span>
@@ -539,7 +626,70 @@ Je m'engage à lâcher prise, progressivement, sur ce qui peut être confié aux
 <h3 style="margin-top:3mm">Mes déclencheurs — ce que je reconnais</h3>
 <div class="cb-row" onclick="togCb(this)"><div class="cb"></div><span class="cb-lbl">Une tâche accomplie différemment de ma façon</span></div><div class="cb-row" onclick="togCb(this)"><div class="cb"></div><span class="cb-lbl">Une décision prise sans me consulter</span></div><div class="cb-row" onclick="togCb(this)"><div class="cb"></div><span class="cb-lbl">Un imprévu qui bouscule un plan établi</span></div><div class="cb-row" onclick="togCb(this)"><div class="cb"></div><span class="cb-lbl">Quelqu'un qui ne respecte pas mes standards</span></div><div class="cb-row" onclick="togCb(this)"><div class="cb"></div><span class="cb-lbl">Une situation où je suis dépendant·e d'une autre personne</span></div>
 <div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 ">0</div><div class="pl act">V</div><div class="pl ">A</div><div class="pl ">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
-</div><div class="page page-c">
+</div><div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 1 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#5C3280"></div><span class="lentille-badge-txt" style="color:#5C3280">Bleu + Indigo · Exigence Projetée</span></div>
+<div class="lentille-title">VOIR quand le standard monte encore</div>
+<div class="lentille-subtitle">Avec le Masque Indigo, votre déclencheur Bleu ne ressemble pas à de la peur — il ressemble à de l'exigence justifiée</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans VOIR, vous apprenez à reconnaître le masque Bleu au moment où il s'active. Avec Bleu + Indigo, ce moment est particulièrement difficile à saisir parce que <strong>votre réponse automatique ressemble à de la rigueur légitime.</strong> Quelqu'un ne fait pas assez bien. Un résultat n'atteint pas le niveau requis. Vous reprenez, vous corrigez, vous rehaussez le standard.</p>
+<div class="lentille-box lentille-indigo">
+  <div class="lentille-box-label">Votre signal spécifique Exigence Projetée</div>
+  <div class="lentille-box-text">Cherchez ce moment : vous avez accompli quelque chose d'excellent — et immédiatement, vous voyez ce qui aurait pu être encore mieux. Ou quelqu'un vous remet un travail de qualité — et votre premier mouvement est d'identifier ce qui manque. <strong>Ce passage automatique à l'insuffisance, même face à la qualité — c'est là que VOIR commence pour vous.</strong></div>
+</div>
+<div class="lentille-cycle">
+  <div class="lentille-cycle-title">Le cycle Exigence Projetée</div>
+  <div class="lentille-step"><div class="lentille-step-n">1</div><div class="lentille-step-txt"><strong>Un résultat n'atteint pas vos standards</strong><br><em>Masque Indigo exige de recommencer</em></div></div>
+  <div class="lentille-step"><div class="lentille-step-n">2</div><div class="lentille-step-txt"><strong>Masque Bleu reprend le contrôle</strong><br><em>Vous rectifiez, vérifiez, imposez votre façon</em></div></div>
+  <div class="lentille-step"><div class="lentille-step-n">3</div><div class="lentille-step-txt"><strong>Les autres ne sont jamais assez bons</strong><br><em>Ni vous-même — le standard monte encore</em></div></div>
+  <div class="lentille-step"><div class="lentille-step-n">4</div><div class="lentille-step-txt"><strong>L'exigence s'étend à tout</strong><br><em>Sans jamais trouver de seuil suffisant</em></div></div>
+</div>
+<p class="lentille-question">Un moment récent où j'ai relevé le standard après une réussite — ce qui s'est passé exactement&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="On a accompli... et ma réaction immédiate a été de voir... qui manquait encore..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl act">V</div><div class="pl ">A</div><div class="pl ">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 1 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#B8930A"></div><span class="lentille-badge-txt" style="color:#B8930A">Bleu + Jaune · Contrôle Relationnel Autoritaire</span></div>
+<div class="lentille-title">VOIR quand maîtrise et certitude s'activent ensemble</div>
+<div class="lentille-subtitle">Avec le Masque Jaune, votre Masque Bleu ne cherche plus seulement à contrôler — il cherche à contrôler ET à savoir avec certitude</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans VOIR, vous repérez le masque Bleu en action. Avec Bleu + Jaune, votre déclencheur a une structure double : <strong>l'imprévu (Jaune) ET la perte de maîtrise (Bleu) s'activent simultanément.</strong> Vous ne tolérez pas de ne pas savoir — et vous ne tolérez pas que ça se passe sans vous.</p>
+<div class="lentille-box lentille-jaune">
+  <div class="lentille-box-label">Votre double déclencheur</div>
+  <div class="lentille-box-text">Le signal se déclenche quand une situation échappe à votre méthode ET vous surprend. Par exemple : une réunion prend une direction imprévue, quelqu'un improvise là où vous aviez planifié, un résultat arrive sans que vous ayez pu anticiper. <strong>La tension double — "je ne savais pas" + "ce n'est pas sous mon contrôle" — c'est votre configuration en action.</strong></div>
+</div>
+<p class="lentille-body">Cette semaine, observez : combien de fois avez-vous vérifié le travail de quelqu'un d'autre que vous aviez délégué ? Combien de fois avez-vous planifié quelque chose pour reprendre le contrôle d'une situation qui vous avait surpris ? <strong>Ces comportements sont votre signal Bleu + Jaune le plus visible.</strong></p>
+<p class="lentille-question">Un moment récent où j'ai ressenti simultanément l'inconfort de l'imprévu et l'envie de reprendre la main&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="Quand... s'est produit sans que je l'aie prévu, j'ai immédiatement voulu..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl act">V</div><div class="pl ">A</div><div class="pl ">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 1 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#2D7A4F"></div><span class="lentille-badge-txt" style="color:#2D7A4F">Bleu + Vert · Dépendance Contrôlante</span></div>
+<div class="lentille-title">VOIR le cycle besoin-contrôle dans vos relations</div>
+<div class="lentille-subtitle">Avec le Masque Vert, votre Masque Bleu n'est pas autoritaire dans tous les domaines — il l'est dans les relations qui comptent le plus</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans VOIR, vous apprenez à repérer le masque Bleu en action. Avec Bleu + Vert, le déclencheur a une caractéristique particulière : <strong>il survient dans les relations importantes — pas les relations professionnelles distantes, mais celles où vous avez besoin de l'autre.</strong></p>
+<div class="lentille-box lentille-vert">
+  <div class="lentille-box-label">Le déclencheur spécifique Dépendance Contrôlante</div>
+  <div class="lentille-box-text">Le signal se déclenche quand vous sentez que l'autre pourrait s'éloigner — ou simplement quand l'autre fait quelque chose d'inattendu. Votre Masque Vert génère l'anxiété de perte. Votre Masque Bleu transforme immédiatement cette anxiété en comportement de contrôle : surveiller, vérifier, exiger, osciller entre distance et proximité intense. <strong>Ce passage automatique de "j'ai peur de te perdre" à "je dois te contrôler pour te garder" — c'est là.</strong></div>
+</div>
+<div class="lentille-cycle">
+  <div class="lentille-cycle-title">Le cycle Dépendance Contrôlante</div>
+  <div class="lentille-step"><div class="lentille-step-n">1</div><div class="lentille-step-txt"><strong>La peur d'être quitté·e s'active</strong><br><em>Masque Vert cherche à sécuriser le lien</em></div></div>
+  <div class="lentille-step"><div class="lentille-step-n">2</div><div class="lentille-step-txt"><strong>Masque Bleu transforme la peur en contrôle</strong><br><em>Surveillance, vérifications, exigences</em></div></div>
+  <div class="lentille-step"><div class="lentille-step-n">3</div><div class="lentille-step-txt"><strong>L'autre ressent la pression et s'éloigne</strong><br><em>Ce qui intensifie la peur d'abandon</em></div></div>
+  <div class="lentille-step"><div class="lentille-step-n">4</div><div class="lentille-step-txt"><strong>Le contrôle se resserre encore</strong><br><em>Créant l'éloignement qu'il voulait éviter</em></div></div>
+</div>
+<p class="lentille-question">Un moment récent où j'ai contrôlé dans une relation par peur de la perdre — ce que j'ai observé&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="Quand j'ai senti que... risquait de s'éloigner, j'ai... pour garder le contrôle..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl act">V</div><div class="pl ">A</div><div class="pl ">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-c">
 <div class="pg-hd"><span class="pg-ch">Module 1 · Journal semaines 1–2</span><span class="pg-nb">18</span></div>
 <span class="tag">Journal de bord</span>
 <h2>Semaines 1–2 — Observations</h2>
@@ -608,7 +758,63 @@ Je m'engage à lâcher prise, progressivement, sur ce qui peut être confié aux
 <p class="exo-q" style="margin-top:2.5mm">Ma stratégie principale — et dans quelle situation&nbsp;:</p>
 <textarea class="wta" rows="2" placeholder=""></textarea>
 <div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 ">0</div><div class="pl done">V</div><div class="pl act">A</div><div class="pl ">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
-</div><div class="page page-c">
+</div><div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 2 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#5C3280"></div><span class="lentille-badge-txt" style="color:#5C3280">Bleu + Indigo · Exigence Projetée</span></div>
+<div class="lentille-title">ACCUEILLIR la frustration du standard non atteint</div>
+<div class="lentille-subtitle">Avec Bleu + Indigo, la résistance à accueillir prend la forme d'une insatisfaction permanente — jamais vraiment de l'émotion, toujours de l'évaluation</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans ACCUEILLIR, vous apprenez à recevoir ce qui est là. Avec Bleu + Indigo, la résistance est particulièrement subtile : <strong>votre Masque Indigo n'arrête jamais d'évaluer — et votre Masque Bleu n'arrête jamais de corriger.</strong> Il n'y a jamais d'espace pour simplement recevoir ce qui est — il est immédiatement évalué, jugé insuffisant, et corrigé.</p>
+<div class="lentille-box lentille-indigo">
+  <div class="lentille-box-label">Votre résistance spécifique à ACCUEILLIR</div>
+  <div class="lentille-box-text">Quand quelque chose n'est pas parfait — un résultat, un comportement de l'autre, votre propre performance — votre réponse n'est pas émotionnelle. C'est fonctionnelle : vous analysez, vous identifiez ce qui ne va pas, vous corrigez. <strong>ACCUEILLIR consiste à rester avec la frustration ou la déception 60 secondes — sans passer à la correction.</strong></div>
+</div>
+<p class="lentille-body">Phrase d'accueil adaptée :<br>
+<em>« Ce résultat n'est pas à la hauteur de ce que j'attendais. Je peux rester avec cette insatisfaction — 60 secondes — sans la transformer immédiatement en action corrective. »</em></p>
+<p class="lentille-body">Ces 60 secondes ne sont pas de la résignation. Elles sont un entraînement à recevoir l'imperfection sans la fuir dans la correction. <strong>C'est le mouvement le plus contre-intuitif de votre configuration.</strong></p>
+<p class="lentille-question">Une insatisfaction récente que j'ai reçue sans corriger immédiatement — et ce qui s'est passé dans ces secondes&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="Quand... n'a pas atteint mon standard, j'ai tenu... secondes avant de... et j'ai remarqué..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl act">A</div><div class="pl ">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 2 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#B8930A"></div><span class="lentille-badge-txt" style="color:#B8930A">Bleu + Jaune · Contrôle Relationnel Autoritaire</span></div>
+<div class="lentille-title">ACCUEILLIR l'imprévu sans le réparer</div>
+<div class="lentille-subtitle">Votre résistance à ACCUEILLIR prend une forme active — dès qu'une situation échappe à votre plan, vous la corrigez avant même de l'avoir traversée</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans ACCUEILLIR, vous apprenez à recevoir sans combattre. Avec Bleu + Jaune, votre résistance est parmi les plus actives : <strong>dès qu'une situation sort de votre plan ou de votre méthode, votre réflexe est de la corriger — immédiatement.</strong> Laisser l'imprévu exister le temps de le traverser est le défi le plus direct de votre configuration.</p>
+<div class="lentille-box lentille-jaune">
+  <div class="lentille-box-label">Le protocole ACCUEILLIR pour Contrôle Autoritaire</div>
+  <div class="lentille-box-text">La prochaine fois qu'une situation sort de votre plan : <strong>attendez 30 secondes avant d'intervenir.</strong><br>
+  Pendant ces 30 secondes : <em>« Il y a quelque chose ici qui n'est pas sous mon contrôle. Je peux recevoir cet inconfort sans y répondre immédiatement. »</em><br>
+  Observez ce qui se passe dans votre corps — la tension dans les épaules, l'envie d'agir, la résistance à laisser l'autre gérer. <strong>C'est exactement là que ACCUEILLIR vit pour vous.</strong></div>
+</div>
+<p class="lentille-body">Ces 30 secondes créent quelque chose d'essentiel pour votre configuration : un espace entre l'imprévu et votre réponse. <strong>Dans cet espace, vous n'êtes plus en réaction automatique — vous êtes en présence de ce qui est.</strong></p>
+<p class="lentille-question">Un imprévu récent que j'ai laissé exister brièvement sans intervenir — et ce que j'ai découvert dans cet espace&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="Quand... est arrivé hors plan, j'ai attendu... et j'ai remarqué que mon corps..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl act">A</div><div class="pl ">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 2 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#2D7A4F"></div><span class="lentille-badge-txt" style="color:#2D7A4F">Bleu + Vert · Dépendance Contrôlante</span></div>
+<div class="lentille-title">ACCUEILLIR la peur d'être abandonné·e sans agir dessus</div>
+<div class="lentille-subtitle">Pour Dépendance Contrôlante, accueillir consiste à laisser la peur de perdre l'autre exister — sans la transformer en surveillance ou en exigence</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans ACCUEILLIR, vous apprenez à recevoir l'émotion sans la combattre. Avec Bleu + Vert, l'émotion la plus difficile à accueillir est la peur de perdre quelqu'un qui compte. <strong>Votre Masque Bleu transforme immédiatement cette peur en action de contrôle</strong> — surveiller, vérifier, exiger une démonstration d'attachement. Cette action évite de traverser la peur elle-même.</p>
+<div class="lentille-box lentille-vert">
+  <div class="lentille-box-label">L'exercice d'ACCUEILLIR pour votre configuration</div>
+  <div class="lentille-box-text">La prochaine fois que vous sentez l'anxiété de perte s'activer (l'autre ne répond pas, l'autre semble distant, l'autre fait quelque chose d'inattendu) : <strong>attendez avant d'agir.</strong> Pas pour toujours — 5 minutes. Pendant ces 5 minutes, accueillez la peur elle-même.<br>
+  <em>« J'ai peur de perdre cette personne. Je peux rester avec cette peur — 5 minutes — sans la transformer en surveillance. »</em></div>
+</div>
+<p class="lentille-body">Ces 5 minutes ne signifient pas que vous ne comptez pas pour l'autre. Elles signifient que vous apprenez à traverser la peur sans en faire un problème relationnel. <strong>L'autre ne sait pas ce que vous traversez — et c'est très bien ainsi.</strong></p>
+<p class="lentille-question">Une peur de perdre quelqu'un que j'ai traversée sans agir dessus — et ce qui s'est passé dans ces minutes&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="J'ai eu peur que... s'éloigne. J'ai attendu... et j'ai découvert que..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl act">A</div><div class="pl ">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-c">
 <div class="pg-hd"><span class="pg-ch">Module 2 · Cohérence cardiaque</span><span class="pg-nb">23</span></div>
 <span class="tag">Outil physiologique</span>
 <h2>La cohérence cardiaque + protocole ACCUEILLIR</h2>
@@ -686,7 +892,68 @@ Je m'engage à lâcher prise, progressivement, sur ce qui peut être confié aux
 <p class="exo-q">Mon Body Scan — zone · sensation · intensité avant · après&nbsp;:</p>
 <textarea class="wta" rows="2" placeholder=""></textarea>
 <div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 ">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl act">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
-</div><div class="page page-c">
+</div><div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 3 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#5C3280"></div><span class="lentille-badge-txt" style="color:#5C3280">Bleu + Indigo · Exigence Projetée</span></div>
+<div class="lentille-title">LOCALISER la tension de l'évaluation permanente</div>
+<div class="lentille-subtitle">Votre corps porte le poids d'un standard qu'aucun résultat n'a encore atteint — cette tension est différente de la vigilance, c'est de l'insatisfaction chronique</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans LOCALISER, vous cherchez l'adresse corporelle de votre peur. Avec Bleu + Indigo, votre corps porte quelque chose de spécifique : <strong>non pas la tension de quelqu'un qui surveille (comme Jaune), mais la tension de quelqu'un qui évalue en permanence — et qui n'est jamais tout à fait satisfait.</strong></p>
+<div class="lentille-box lentille-indigo">
+  <div class="lentille-box-label">Les zones typiques du perfectionnisme contrôlant</div>
+  <div class="lentille-box-text">Le front légèrement plissé (état d'évaluation constant — même au repos).<br>
+  Les épaules hautes et légèrement en avant (posture "prêt à corriger").<br>
+  Les avant-bras et mains en tension (prêts à agir, à reprendre).<br>
+  Une agitation subtile quand vous observez quelqu'un faire quelque chose "autrement".<br>
+  <strong>Cette tension n'est pas de la colère — c'est de l'insatisfaction structurelle. Elle est si habituelle que vous ne la remarquez plus.</strong></div>
+</div>
+<p class="lentille-body">Exercice révélateur : faites le Body Scan juste après avoir regardé quelqu'un faire quelque chose que vous auriez fait autrement. <strong>C'est à ce moment précis que la tension Bleu + Indigo est la plus visible dans votre corps.</strong></p>
+<p class="lentille-question">La zone corporelle où l'évaluation permanente vit en moi — ce que j'ai localisé&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="Quand je regarde quelqu'un faire quelque chose autrement, je sens... dans..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl act">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 3 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#B8930A"></div><span class="lentille-badge-txt" style="color:#B8930A">Bleu + Jaune · Contrôle Relationnel Autoritaire</span></div>
+<div class="lentille-title">LOCALISER la tension du contrôle actif</div>
+<div class="lentille-subtitle">Votre corps ne se repose jamais vraiment — il reste en posture de maîtrise même quand rien ne l'exige objectivement</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans LOCALISER, vous cartographiez vos sensations. Avec Bleu + Jaune, votre corps exprime quelque chose de particulier : <strong>non pas la tension passive de quelqu'un qui surveille, mais la tension active de quelqu'un qui dirige en permanence.</strong> Votre corps est toujours en mode "gestion" — même en vacances, même au repos.</p>
+<div class="lentille-box lentille-jaune">
+  <div class="lentille-box-label">Les signaux corporels du contrôle actif permanent</div>
+  <div class="lentille-box-text">Mains actives même au repos (tambouriner, cliqueter, être "prêtes").<br>
+  Regard qui balaie l'environnement pour évaluer ce qui se passe.<br>
+  Difficulté à s'asseoir sans activité ou sans surveiller quelque chose.<br>
+  Irritabilité physique quand une situation échappe à votre supervision.<br>
+  <strong>Cette impossibilité à se reposer vraiment est la signature corporelle de Bleu + Jaune.</strong> Votre corps n'a jamais le signal que tout est sous contrôle.</div>
+</div>
+<p class="lentille-body">Exercice : faites le Body Scan deux fois — une fois en imaginant que vous êtes responsable de tout ce qui se passe autour de vous, une fois en imaginant que quelqu'un d'autre gère. <strong>La différence entre ces deux états vous montre le coût physique exact du contrôle total.</strong></p>
+<p class="lentille-question">La différence corporelle entre "je gère tout" et "quelqu'un d'autre gère" — ce que j'ai observé&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="Quand j'ai imaginé que quelqu'un d'autre gérait, mon corps... par rapport à d'habitude..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl act">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 3 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#2D7A4F"></div><span class="lentille-badge-txt" style="color:#2D7A4F">Bleu + Vert · Dépendance Contrôlante</span></div>
+<div class="lentille-title">LOCALISER la tension du lien contrôlé</div>
+<div class="lentille-subtitle">Votre corps réagit différemment selon que vous sentez l'autre proche ou distant — cette différence est l'adresse corporelle de votre configuration</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans LOCALISER, vous cherchez où la peur vit dans votre corps. Avec Bleu + Vert, il existe une variable révélatrice : <strong>vos sensations corporelles changent selon que vous avez le sentiment de "tenir" la relation ou non.</strong></p>
+<div class="lentille-box lentille-vert">
+  <div class="lentille-box-label">Un Body Scan en deux états relationnels</div>
+  <div class="lentille-box-text">Faites le Body Scan en pensant à une relation où vous vous sentez "en contrôle" (l'autre est disponible, prévisible, vous savez comment ça va). Puis refaites-le en pensant à une relation où vous sentez l'autre plus distant ou imprévisible.<br>
+  <strong>Quelles zones bougent ? Où la différence est-elle la plus marquée ?</strong><br>
+  C'est là que Bleu + Vert s'exprime dans votre corps.</div>
+</div>
+<p class="lentille-body">Cette observation n'est pas pour vous faire sentir dépendant·e — c'est pour vous montrer précisément où dans votre corps la peur de perdre quelqu'un et le besoin de le maîtriser s'expriment. <strong>Ce que vous trouvez, vous pouvez commencer à le travailler.</strong></p>
+<p class="lentille-question">La zone corporelle où la menace d'éloignement d'une personne importante s'exprime — ce que j'ai trouvé&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="Quand je pense que... pourrait s'éloigner, je sens dans... comme si..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl act">L</div><div class="pl ">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-c">
 <div class="pg-hd"><span class="pg-ch">Module 3 · Journal semaines 5–6</span><span class="pg-nb">29</span></div>
 <span class="tag">Journal de bord</span>
 <h2>Semaines 5–6 — Journal corporel</h2>
@@ -768,7 +1035,72 @@ Je m'engage à lâcher prise, progressivement, sur ce qui peut être confié aux
 <div class="gcell"><span class="gc-lbl">Ce qu'il me coûte</span><textarea class="wta" rows="2" placeholder=""></textarea></div>
 </div>
 <div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 ">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl done">L</div><div class="pl act">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
-</div><div class="page page-c">
+</div><div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 4 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#5C3280"></div><span class="lentille-badge-txt" style="color:#5C3280">Bleu + Indigo · Exigence Projetée</span></div>
+<div class="lentille-title">EXPLORER ce que la perfection protège vraiment</div>
+<div class="lentille-subtitle">Vos deux masques imposent ensemble des standards qui montent à chaque réussite — mais ce qu'ils protègent est bien plus précieux que la performance</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans EXPLORER, vous cherchez ce que votre masque protège vraiment. Avec Bleu + Indigo, la surface montre de la rigueur et de l'exigence. Mais sous cette surface, <strong>il y a une peur plus profonde que la peur de l'imperfection : la peur de ne pas compter, de ne pas être vu·e, de ne pas avoir de valeur si le résultat n'est pas exceptionnel.</strong></p>
+<div class="lentille-box lentille-indigo">
+  <div class="lentille-box-label">Les deux couches du conflit</div>
+  <div class="lentille-box-text">Couche Bleu : « Je dois diriger et maîtriser pour que les choses soient bien faites. »<br>
+  Couche Indigo : « Je dois être parfait·e pour mériter ma place. »<br>
+  <strong>Ce que ces deux masques partagent : la conviction que l'amour, le respect ou la place qu'on occupe dépendent de la performance.</strong><br>
+  Votre valeur profonde : être reconnu·e pour ce que vous êtes — pas seulement pour ce que vous produisez ou contrôlez.</div>
+</div>
+<p class="lentille-body">Question clé pour votre exploration :<br>
+<em>« Si votre prochaine réussite était privée — personne ne le saurait jamais — est-ce que vous auriez quand même envie de la faire aussi bien ? »</em><br>
+La réponse vous dit quelque chose d'essentiel sur ce que vous cherchez vraiment sous la perfection.</p>
+<p class="lentille-question">Ce que je cherche vraiment sous l'exigence de perfection — formulé honnêtement&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="Quand j'exige la perfection de moi-même ou des autres, ce que je cherche vraiment c'est..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl done">L</div><div class="pl act">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 4 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#B8930A"></div><span class="lentille-badge-txt" style="color:#B8930A">Bleu + Jaune · Contrôle Relationnel Autoritaire</span></div>
+<div class="lentille-title">EXPLORER pourquoi l'imprévu est vécu comme une menace</div>
+<div class="lentille-subtitle">Vos deux masques cherchent ensemble l'élimination de l'incertitude — mais ce qu'ils protègent est votre propre capacité à traverser l'imprévu</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans EXPLORER, vous cherchez ce que vos masques protègent. Avec Bleu + Jaune, la réponse de surface est : "je contrôle pour que tout aille bien". Mais la réponse plus profonde est : <strong>la conviction que si quelque chose échappe à votre contrôle et à votre prévision, vous ne pourrez pas le gérer.</strong></p>
+<div class="lentille-box lentille-jaune">
+  <div class="lentille-box-label">La croyance fondatrice à explorer</div>
+  <div class="lentille-box-text">Sous le contrôle Bleu et la planification Jaune, il y a souvent cette croyance silencieuse : <em>« Je ne suis pas en sécurité si je ne maîtrise pas. »</em><br>
+  <strong>Votre valeur profonde : la confiance en votre capacité à traverser ce qui arrive — même ce que vous n'avez pas prévu.</strong><br>
+  Cette confiance existe déjà en vous — sinon vous n'auriez pas survécu à tout ce qui vous a surpris jusqu'ici.</div>
+</div>
+<p class="lentille-body">Question d'exploration :<br>
+<em>« Quelle preuve ai-je déjà que j'ai traversé quelque chose d'imprévu — et que je m'en suis sorti·e, sans l'avoir contrôlé ? »</em><br>
+Ces preuves existent. Les retrouver est l'un des actes EXPLORER les plus libérateurs pour votre configuration.</p>
+<p class="lentille-question">Une preuve que j'ai traversé quelque chose d'imprévu — sans en avoir eu le contrôle — et que j'ai survécu&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="Un imprévu que je n'avais pas contrôlé et que j'ai pourtant traversé : ..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl done">L</div><div class="pl act">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 4 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#2D7A4F"></div><span class="lentille-badge-txt" style="color:#2D7A4F">Bleu + Vert · Dépendance Contrôlante</span></div>
+<div class="lentille-title">EXPLORER le paradoxe du contrôle qui éloigne</div>
+<div class="lentille-subtitle">Vous contrôlez pour ne pas perdre l'autre — mais le contrôle crée précisément l'éloignement que vous redoutez</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans EXPLORER, vous cherchez le conflit fondamental. Avec Bleu + Vert, ce conflit est particulièrement douloureux — parce que <strong>votre stratégie de protection détruit ce qu'elle cherche à préserver.</strong> Vous contrôlez pour garder l'autre. L'autre s'éloigne sous la pression. Vous contrôlez plus fort.</p>
+<div class="lentille-box lentille-vert">
+  <div class="lentille-box-label">Le paradoxe à nommer clairement</div>
+  <div class="lentille-box-text">Masque Vert : « J'ai peur de perdre cette personne — je dois faire quelque chose pour la garder. »<br>
+  Masque Bleu : « La seule façon de la garder est de contrôler ce qu'elle fait. »<br>
+  Résultat : l'autre ressent la pression et s'éloigne — exactement ce que les deux masques voulaient éviter.<br>
+  <strong>Votre valeur profonde : un lien librement choisi — par vous et par l'autre. Un lien qui n'a pas besoin d'être tenu pour rester.</strong></div>
+</div>
+<p class="lentille-body">Question clé :<br>
+<em>« Si je n'avais aucun moyen de surveiller ou de contrôler cette relation — est-ce que je lui ferais confiance d'exister par elle-même ? »</em><br>
+Cette question touche au cœur de votre configuration.</p>
+<p class="lentille-question">Une relation que j'ai tenté de contrôler pour la garder — et ce que ce contrôle a produit sur le lien&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="Avec..., j'ai contrôlé en... et ce que ça a produit dans le lien, c'est..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl done">L</div><div class="pl act">E</div><div class="pl ">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-c">
 <div class="pg-hd"><span class="pg-ch">Module 4 · Journal + Bilan</span><span class="pg-nb">35</span></div>
 <span class="tag">Journal + Bilan</span>
 <h2>Journal semaines 7–8 &amp; Bilan</h2>
@@ -826,7 +1158,67 @@ Je m'engage à lâcher prise, progressivement, sur ce qui peut être confié aux
 <div class="gcell"><span class="gc-lbl" style="color:var(--b300)">Nouvelle stratégie</span><textarea class="wta" rows="2" placeholder=""></textarea></div>
 </div>
 <div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 ">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl done">L</div><div class="pl done">E</div><div class="pl act">U</div><div class="pl ">R</div></div></div>
-</div><div class="page page-c">
+</div><div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 5 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#5C3280"></div><span class="lentille-badge-txt" style="color:#5C3280">Bleu + Indigo · Exigence Projetée</span></div>
+<div class="lentille-title">UNIFIER l'exigence et la valeur intrinsèque</div>
+<div class="lentille-subtitle">L'unification pour Exigence Projetée consiste à découvrir que votre valeur ne dépend pas du niveau de vos accomplissements</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans UNIFIER, vous réconciliez les parties en conflit. Avec Bleu + Indigo, le paradoxe central est là : <strong>vos standards montent à chaque réussite — ce qui signifie que vous n'êtes jamais vraiment arrivé·e quelque part.</strong> L'unification consiste à séparer votre valeur de votre performance.</p>
+<div class="lentille-box lentille-indigo">
+  <div class="lentille-box-label">Votre formule d'unification Exigence Projetée</div>
+  <div class="lentille-box-text">« J'exige la qualité et la maîtrise ET mon standard monte à chaque réussite<br>
+  ET cela ne signifie pas que je ne suis jamais assez bien<br>
+  ET ma valeur existe indépendamment de ce que je produis ou dirige.<br>
+  Je peux viser l'excellence ET m'accorder de la valeur à chaque étape — pas seulement à l'arrivée. »</div>
+</div>
+<p class="lentille-body">Cette formule fait quelque chose d'essentiel : elle ne demande pas à votre Masque Bleu de cesser d'exiger, ni à votre Masque Indigo de baisser ses standards. <strong>Elle affirme simplement que votre valeur n'est pas conditionnelle au résultat.</strong></p>
+<p class="lentille-question">Ma formule d'unification Bleu + Indigo — personnelle et précise&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="J'exige... ET je n'atteins jamais mon standard ET je peux quand même m'accorder..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl done">L</div><div class="pl done">E</div><div class="pl act">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 5 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#B8930A"></div><span class="lentille-badge-txt" style="color:#B8930A">Bleu + Jaune · Contrôle Relationnel Autoritaire</span></div>
+<div class="lentille-title">UNIFIER la maîtrise et la confiance</div>
+<div class="lentille-subtitle">L'unification pour Contrôle Autoritaire consiste à découvrir la différence entre maîtriser pour se sentir en sécurité et faire confiance à sa capacité de traverser</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans UNIFIER, vous réconciliez les parties en conflit. Avec Bleu + Jaune, le paradoxe central est là : <strong>plus vous contrôlez et anticipez, plus vous avez besoin de contrôler et d'anticiper.</strong> La maîtrise totale n'apporte jamais la sécurité qu'elle promet. L'unification consiste à trouver une sécurité qui ne repose pas sur la maîtrise absolue.</p>
+<div class="lentille-box lentille-jaune">
+  <div class="lentille-box-label">Votre formule d'unification Contrôle Autoritaire</div>
+  <div class="lentille-box-text">« J'ai besoin de maîtriser et d'anticiper pour me sentir en sécurité<br>
+  ET certaines choses échappent toujours à mon contrôle<br>
+  ET je peux faire confiance à ma capacité de traverser ce que je n'ai pas prévu<br>
+  ET déléguer n'est pas perdre — c'est choisir où mettre mon énergie. »</div>
+</div>
+<p class="lentille-body">La lettre au Masque Bleu (exercice de ce module) peut être enrichie : ajoutez une ligne à votre Masque Jaune. <em>« Merci d'avoir cherché la certitude. Aujourd'hui, j'apprends que ma sécurité peut venir de la confiance en moi — pas seulement du contrôle sur le monde. »</em></p>
+<p class="lentille-question">Ma formule d'unification Bleu + Jaune — ce en quoi j'apprends à faire confiance&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="Je contrôle ET certaines choses m'échappent ET je peux faire confiance à ma capacité de..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl done">L</div><div class="pl done">E</div><div class="pl act">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 5 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#2D7A4F"></div><span class="lentille-badge-txt" style="color:#2D7A4F">Bleu + Vert · Dépendance Contrôlante</span></div>
+<div class="lentille-title">UNIFIER le besoin et la liberté de l'autre</div>
+<div class="lentille-subtitle">L'unification pour Dépendance Contrôlante consiste à trouver la connexion qui n'a pas besoin d'être tenue pour exister</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans UNIFIER, vous réconciliez les parties en conflit. Avec Bleu + Vert, le paradoxe central est là : <strong>vous contrôlez pour garder l'autre — et ce contrôle crée l'éloignement que vous redoutiez.</strong> L'unification consiste à lâcher le contrôle de la relation pour que la connexion puisse exister librement.</p>
+<div class="lentille-box lentille-vert">
+  <div class="lentille-box-label">Votre formule d'unification Dépendance Contrôlante</div>
+  <div class="lentille-box-text">« J'ai besoin de cette relation ET j'ai peur de la perdre<br>
+  ET mon contrôle crée l'éloignement que je redoute<br>
+  ET je peux lâcher le contrôle de cette relation — et lui faire confiance d'exister par elle-même<br>
+  ET ma valeur dans cette relation ne dépend pas de ma capacité à la maîtriser. »</div>
+</div>
+<p class="lentille-body">Cette formule touche à quelque chose de profond pour votre configuration : <strong>la confiance qu'un lien peut exister sans être tenu.</strong> Pas contrôlé, pas surveillé — simplement là, librement. C'est la forme de connexion la plus nourrissante — et la plus difficile d'accès pour Bleu + Vert.</p>
+<p class="lentille-question">Ma formule d'unification Bleu + Vert — et ce que je peux commencer à laisser libre dans une relation importante&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="J'ai besoin de... ET j'ai peur de le perdre ET je peux laisser..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl done">L</div><div class="pl done">E</div><div class="pl act">U</div><div class="pl ">R</div></div></div>
+</div>
+<div class="page page-c">
 <div class="pg-hd"><span class="pg-ch">Module 5 · Formule + Lettre</span><span class="pg-nb">38</span></div>
 <span class="tag">Formule + Exercice pivot</span>
 <h2>«&nbsp;Quelque chose m'échappe ET je fais confiance&nbsp;»</h2>
@@ -923,7 +1315,70 @@ Je m'engage à lâcher prise, progressivement, sur ce qui peut être confié aux
 <h3 style="margin-top:3mm">🌿 Récupérer son énergie</h3>
 <div class="cb-row" onclick="togCb(this)"><div class="cb"></div><span class="cb-lbl"><strong>4/10</strong> — Identifier une tâche que vous faites seul·e depuis longtemps — et la déléguer définitivement</span></div><div class="cb-row" onclick="togCb(this)"><div class="cb"></div><span class="cb-lbl"><strong>5/10</strong> — Dire «&nbsp;non, je ne suis pas disponible pour ça&nbsp;» sans justifier longuement</span></div><div class="cb-row" onclick="togCb(this)"><div class="cb"></div><span class="cb-lbl"><strong>6/10</strong> — Demander de l'aide pour quelque chose que vous aviez toujours géré seul·e</span></div><div class="cb-row" onclick="togCb(this)"><div class="cb"></div><span class="cb-lbl"><strong>8/10</strong> — Vivre une semaine entière en choisissant d'influencer plutôt que de diriger dans chaque situation</span></div>
 <div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 ">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl done">L</div><div class="pl done">E</div><div class="pl done">U</div><div class="pl act">R</div></div></div>
-</div><div class="page page-c">
+</div><div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 6 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#5C3280"></div><span class="lentille-badge-txt" style="color:#5C3280">Bleu + Indigo · Exigence Projetée</span></div>
+<div class="lentille-title">RENFORCER le droit à l'excellence imparfaite</div>
+<div class="lentille-subtitle">Les défis les plus transformateurs pour vous sont ceux qui permettent à quelque chose d'être bon sans être parfait — et de ne pas le corriger</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans RENFORCER, vous ancrez de nouveaux comportements. Pour votre configuration, <strong>le défi le plus radical n'est pas de mieux performer — c'est de laisser quelque chose être "assez bon" sans y toucher.</strong></p>
+<div class="lentille-box lentille-indigo">
+  <div class="lentille-box-label">Défis spécifiques pour Exigence Projetée</div>
+  <div class="lentille-box-text">Remettre un travail sans le relire une dernière fois — et noter ce qui se passe.<br>
+  Laisser quelqu'un finir une tâche sans corriger, même si vous l'auriez faite autrement.<br>
+  Accepter un compliment avec un simple "merci" — sans minimiser ni relativiser.<br>
+  Laisser passer une journée sans améliorer quelque chose.<br>
+  <strong>Mesure de progrès : combien de fois vous constatez que "assez bon" était vraiment suffisant.</strong></div>
+</div>
+<p class="lentille-body">Ces défis accumulent quelque chose d'essentiel : <strong>des preuves que le monde ne s'effondre pas quand tout n'est pas parfait ni sous votre contrôle.</strong> Ces preuves constituent progressivement une nouvelle forme de sécurité.</p>
+<p class="lentille-question">Un moment où j'ai laissé quelque chose être "assez bon" sans le corriger — et ce que j'ai constaté&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="J'ai laissé... tel quel sans... et j'ai constaté que le résultat était..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl done">L</div><div class="pl done">E</div><div class="pl done">U</div><div class="pl act">R</div></div></div>
+</div>
+<div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 6 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#B8930A"></div><span class="lentille-badge-txt" style="color:#B8930A">Bleu + Jaune · Contrôle Relationnel Autoritaire</span></div>
+<div class="lentille-title">RENFORCER la délégation réelle</div>
+<div class="lentille-subtitle">Les défis les plus puissants pour vous sont ceux qui permettent à quelqu'un d'autre de gérer — différemment, et correctement</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans RENFORCER, vous posez des gestes concrets. Pour votre configuration, <strong>le défi fondamental est la délégation complète — pas "je délègue et je vérifie", mais "je délègue et je laisse l'autre gérer à sa façon".</strong></p>
+<div class="lentille-box lentille-jaune">
+  <div class="lentille-box-label">Défis spécifiques pour Contrôle Relationnel Autoritaire</div>
+  <div class="lentille-box-text">Déléguer une tâche complète sans demander de compte-rendu tant qu'elle n'est pas terminée.<br>
+  Laisser une réunion se dérouler sans intervenir pendant au moins les 10 premières minutes.<br>
+  Accepter qu'un résultat soit fait différemment de votre méthode — et noter qu'il est acceptable.<br>
+  Laisser quelqu'un prendre une décision qui vous concerne sans donner votre avis.<br>
+  <strong>Mesure clé : combien de fois vous constatez que "différent de ma façon" ne signifie pas "mauvais".</strong></div>
+</div>
+<p class="lentille-body">Chaque fois que vous laissez quelqu'un gérer à sa façon et que le résultat est acceptable, vous récoltez une preuve directe que la maîtrise totale n'était pas nécessaire. <strong>Ces preuves s'accumulent — et construisent progressivement une confiance que le contrôle ne peut pas atteindre.</strong></p>
+<p class="lentille-question">Une délégation réelle que j'ai faite — et la preuve que le résultat était acceptable sans mon intervention&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="J'ai délégué... à... sans vérifier. Le résultat était... Et j'ai constaté que..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl done">L</div><div class="pl done">E</div><div class="pl done">U</div><div class="pl act">R</div></div></div>
+</div>
+<div class="page page-lentille">
+<div class="lentille-accent"></div>
+<div class="pg-hd"><span class="pg-ch">Module 6 · Lentille de Résonance</span><span class="pg-nb"></span></div>
+<div class="lentille-badge"><div class="lentille-badge-dot" style="background:#2D7A4F"></div><span class="lentille-badge-txt" style="color:#2D7A4F">Bleu + Vert · Dépendance Contrôlante</span></div>
+<div class="lentille-title">RENFORCER la confiance dans le lien sans surveillance</div>
+<div class="lentille-subtitle">Les défis qui ancrent le plus sont ceux qui permettent à la relation d'exister sans votre supervision — et de constater qu'elle tient</div>
+<div class="lentille-rule"></div>
+<p class="lentille-body">Dans RENFORCER, vous ancrez de nouveaux automatismes. Pour votre configuration, <strong>le défi le plus transformateur est de laisser une relation importante exister sans la surveiller — et de constater qu'elle résiste.</strong></p>
+<div class="lentille-box lentille-vert">
+  <div class="lentille-box-label">Défis spécifiques pour Dépendance Contrôlante</div>
+  <div class="lentille-box-text">Passer une journée entière sans vérifier où est ou ce que fait une personne importante.<br>
+  Laisser quelqu'un prendre de l'espace (sortir seul·e, avoir une journée sans contact) sans interpréter ça comme un éloignement.<br>
+  Ne pas chercher de réassurance pendant 24 heures sur une relation qui va bien objectivement.<br>
+  Exprimer un besoin relationnel — et laisser l'autre décider comment y répondre.<br>
+  <strong>Mesure clé : combien de fois vous constatez que la relation tenait même sans votre surveillance.</strong></div>
+</div>
+<p class="lentille-body">Chaque observation que la relation existe sans que vous la teniez activement construit quelque chose d'essentiel : <strong>la preuve que la connexion n'a pas besoin de votre contrôle pour durer.</strong> Ces preuves s'accumulent et transforment progressivement votre façon d'être dans les liens.</p>
+<p class="lentille-question">Un moment où j'ai laissé une relation exister sans la surveiller — et ce que j'ai constaté sur ce lien&nbsp;:</p>
+<textarea class="lentille-wta" rows="2" placeholder="J'ai laissé... sans vérifier pendant... et j'ai constaté que le lien..."></textarea>
+<div class="pg-ft"><span class="pg-ft-t">© Céline Bourbon · V.A.L.E.U.R©</span><div class="prog"><div class="pl0 done">0</div><div class="pl done">V</div><div class="pl done">A</div><div class="pl done">L</div><div class="pl done">E</div><div class="pl done">U</div><div class="pl act">R</div></div></div>
+</div>
+<div class="page page-c">
 <div class="pg-hd"><span class="pg-ch">Module 6 · Journal semaines 11–12</span><span class="pg-nb">44</span></div>
 <span class="tag">Journal de bord</span>
 <h2>Semaines 11–12 — Journal de renforcement</h2>
@@ -1042,6 +1497,21 @@ function updateNav(){
 }
 window.addEventListener('scroll',updateNav);
 function scrollTo(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});}
+/* ── WATERMARK acheteur depuis URL params ── */
+(function(){
+  try {
+    const p = new URLSearchParams(window.location.search);
+    const nom   = p.get('nom')   || 'Document personnel';
+    const email = p.get('email') || '';
+    document.getElementById('wm-nom').textContent   = nom;
+    document.getElementById('wm-email').textContent = email;
+    const bn = document.getElementById('bl-nom');
+    const be = document.getElementById('bl-email');
+    if(bn) bn.textContent = nom;
+    if(be) be.textContent = email;
+  } catch(e){}
+})();
+
 const KEY='valeur_livret_bleu_v1';
 function save(){
   const data={};
